@@ -19,11 +19,11 @@ namespace CareerCloud.Pocos
         [Column("State_Province_Code")]
         public string Province { get; set; }
         [Column("Street_Address")]
-        public string Street { get; set; }//Street_Address in DB
+        public string Street { get; set; }
         [Column("City_Town")]
-        public string City { get; set; }//City_Town IN DB
+        public string City { get; set; }
         [Column("Zip_Postal_Code")]
-        public string PostalCode { get; set; }//Zip_Postal_Code IN DB
+        public string PostalCode { get; set; }
         [Column("Time_Stamp")]
         public byte[] TimeStamp { get; set; }
     }
