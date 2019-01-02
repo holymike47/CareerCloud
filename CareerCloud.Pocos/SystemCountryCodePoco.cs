@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 namespace CareerCloud.Pocos
 {
     [Table("System_Country_Codes")]
-    public class SystemCountryCodePoco : IPoco
+    public class SystemCountryCodePoco
     {
-        [Key]
-        public Guid Id { get; set; }
         [Key]
         public string Code { get; set; }
         public string Name { get; set; }
