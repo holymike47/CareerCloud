@@ -13,13 +13,20 @@ namespace CareerCloud.Pocos
     {
         [Key]
         public Guid Id { get; set; }
+        [Required]
         public Guid Company { get; set; }
+        [StringLength(10),Required]
         public string LanguageId { get; set; }
-        [Column("Company_Name")]
+        [Column("Company_Name"),StringLength(50),Required]
         public string CompanyName { get; set; }
-        [Column("Company_Description")]
+        [Column("Company_Description"),StringLength(1000),Required]
         public string CompanyDescription { get; set; }
-        [Column("Time_Stamp")]
+        [Column("Time_Stamp",TypeName = "timestamp")]
+        [Timestamp,NotMapped]
         public byte[] TimeStamp { get; set; }
+        [ForeignKey(nameof(Company))]
+        public virtual CompanyProfilePoco CompanyProfile { get; set; }
+        [ForeignKey(nameof(LanguageId))]
+        public virtual SystemLanguageCodePoco SystemLanguageCode { get; set; }
     }
 }

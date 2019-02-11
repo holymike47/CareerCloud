@@ -13,10 +13,16 @@ namespace CareerCloud.Pocos
     {
         [Key]
         public Guid Id { get; set; }
+        [Required]
         public Guid Job { get; set; }
+        [StringLength(100),Required]
         public string Major { get; set; }
+        [Required]
         public short Importance { get; set; }
-        [Column("Time_Stamp")]
+        [Column("Time_Stamp",TypeName = "timestamp")]
+        [Timestamp,NotMapped]
         public byte[] TimeStamp { get; set; }
+        [ForeignKey(nameof(Job))]
+        public virtual CompanyJobPoco CompanyJob { get; set; }
     }
 }

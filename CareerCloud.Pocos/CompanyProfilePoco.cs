@@ -11,19 +11,24 @@ namespace CareerCloud.Pocos
     [Table("Company_Profiles")]
     public class CompanyProfilePoco : IPoco
     {
+ 
         [Key]
         public Guid Id { get; set; }
-        [Column("Registration_Date")]
+        [Column("Registration_Date"),Required]
         public DateTime RegistrationDate { get; set; }
-        [Column("Company_Website")]
+        [Column("Company_Website"),StringLength(100)]
         public string CompanyWebsite { get; set; }
-        [Column("Contact_Phone")]
+        [Column("Contact_Phone"),StringLength(20),Required]
         public string ContactPhone { get; set; }
-        [Column("Contact_Name")]
+        [Column("Contact_Name"),StringLength(50)]
         public string ContactName { get; set; }
         [Column("Company_Logo")]
         public byte[] CompanyLogo { get; set; }
-        [Column("Time_Stamp")]
+        [Column("Time_Stamp",TypeName = "timestamp")]
+        [Timestamp,NotMapped]
         public byte[] TimeStamp { get; set; }
+        public virtual ICollection<CompanyLocationPoco> CompanyLocations { get; set; }
+        public virtual ICollection<CompanyDescriptionPoco> CompanyDescriptions { get; set; }
+        public virtual ICollection<CompanyJobPoco> CompanyJobs { get; set; }
     }
 }
