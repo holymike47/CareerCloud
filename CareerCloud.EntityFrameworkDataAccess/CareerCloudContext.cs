@@ -10,8 +10,10 @@ namespace CareerCloud.EntityFrameworkDataAccess
 {
     public class CareerCloudContext:DbContext
     {
-        public CareerCloudContext():base("name=CareerCloudContext")
-        { }
+        public CareerCloudContext(bool createProxy = true) :base("name=CareerCloudContext")
+        {
+            Configuration.ProxyCreationEnabled = createProxy;
+        }
         public virtual DbSet<ApplicantEducationPoco> ApplicantEducation { get; set; }
         public virtual DbSet<ApplicantJobApplicationPoco> ApplicantJobApplication { get; set; }
         public virtual DbSet<ApplicantProfilePoco> ApplicantProfile { get; set; }

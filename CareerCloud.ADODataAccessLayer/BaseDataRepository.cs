@@ -11,7 +11,8 @@ namespace CareerCloud.ADODataAccessLayer
         protected string ConnectionString;
         public BaseDataRepository()
         {
-            ConnectionString = @"Data Source=DESKTOP-7SBTKDS\HUMBERBRIDGING;Initial Catalog=JOB_PORTAL_DB;Integrated Security=True;";
+            ConnectionString = @"data source=DESKTOP-OA8CCR2\HM;initial catalog=JOB_PORTAL_DB;integrated security=True;";
+            //ConnectionString = @"Data Source=DESKTOP-7SBTKDS\HUMBERBRIDGING;Initial Catalog=JOB_PORTAL_DB;Integrated Security=True;";
         }
     }
 }

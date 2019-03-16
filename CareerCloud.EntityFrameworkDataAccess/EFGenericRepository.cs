@@ -1,4 +1,5 @@
 ﻿using CareerCloud.DataAccessLayer;
+using CareerCloud.Pocos;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.EntityFrameworkDataAccess
 {
-    public class EFGenericRepository<T> : IDataRepository<T> where T:class
+    public class EFGenericRepository<T> : IDataRepository<T> where T: class
     {
         private DbSet<T> _set;
         private CareerCloudContext _context;
-        public EFGenericRepository()
+        public EFGenericRepository(bool createProxy = true)
         {
-            _context = new CareerCloudContext();
+            _context = new CareerCloudContext(createProxy);
             _set = _context.Set<T>();
         }
         public void Add(params T[] items)
@@ -60,10 +61,11 @@ namespace CareerCloud.EntityFrameworkDataAccess
             IQueryable<T> query = _set;
             foreach(Expression<Func<T, object>> navProp in navigationProperties)
             {
-                query = query.Include<T,object>(navProp);
+                query = _set.Include<T,object>(navProp);
+                
             }
-            return query.FirstOrDefault(where);
-           
+            return query.Where(where).FirstOrDefault();
+       
         }
 
         public void Remove(params T[] items)
