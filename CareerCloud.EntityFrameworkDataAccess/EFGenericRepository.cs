@@ -23,7 +23,8 @@ namespace CareerCloud.EntityFrameworkDataAccess
         {
             foreach(var poco in items)
             {
-                _context.Entry(poco).State = EntityState.Added;
+                //_context.Entry(poco).State = EntityState.Added;
+                _set.Add(poco);
             }
             SaveChanges();
         }
